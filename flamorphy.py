@@ -42,7 +42,6 @@ def inflect_words(raw_str, required_grammemes_list, parse_indexes=None, full=Fal
     if not parse_indexes:
         parse_indexes = [0] * len(words)
     if len(required_grammemes_list) != len(words):
-        print(type(required_grammemes_list), raw_str)
         raise ValueError('`required_grammemes_list` length should be the same as word count % s' %
                          required_grammemes_list)
     if len(parse_indexes) != len(words):

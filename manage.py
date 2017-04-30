@@ -11,7 +11,7 @@ manager = Manager(app)
 @manager.command
 def runserver():
     configure_app(app, config_name='dev')
-    # from app import flamorphy
+    from app import flamorphy
 
     app.run(host='127.0.0.1', port=BaseConfig.PORT)
 

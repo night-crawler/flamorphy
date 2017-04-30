@@ -1,0 +1,4 @@
+pymorphy2
+flask
+Flask-JSONRPC
+Flask-Script

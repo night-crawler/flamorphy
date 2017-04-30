@@ -4,11 +4,10 @@ from flask_jsonrpc import JSONRPC
 from app import app
 from app.schemas import PyMorphyParseResultSchema, PyMorphyParseResultSchemaLight
 
-jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
+# jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
 morph = pymorphy2.MorphAnalyzer()
 
-# app = Flask(__name__)
-# jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
+jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
 
 
 @jsonrpc.method('flamorphy.parse(String, Boolean) -> Array')
@@ -55,5 +54,5 @@ def inflect_words(raw_str, required_grammemes_list, parse_indexes=None, full=Fal
     return response
 
 
-# if __name__ == '__main__':
-#     app.run(host='0.0.0.0', debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=1681, debug=True)

@@ -8,6 +8,7 @@ class BaseConfig:
 
     DEBUG = False
     TESTING = False
+    HOST = 'localhost'
     PORT = 1681
 
 
@@ -27,10 +28,10 @@ class TestingConfig(BaseConfig):
 
 
 config = {
-    'default': 'app.config.DevelopmentConfig',
-    'dev': 'app.config.DevelopmentConfig',
-    'prod': 'app.config.ProductionConfig',
-    'test': 'app.config.TestingConfig',
+    'default': 'flamorphy.config.DevelopmentConfig',
+    'dev': 'flamorphy.config.DevelopmentConfig',
+    'prod': 'flamorphy.config.ProductionConfig',
+    'test': 'flamorphy.config.TestingConfig',
 }
 
 

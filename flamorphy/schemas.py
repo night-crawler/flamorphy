@@ -2,6 +2,7 @@ from marshmallow import Schema, fields
 
 
 class OpencorporaTagSchema(Schema):
+    POS = fields.Str()
     animacy = fields.Str()
     aspect = fields.Str()
     case = fields.Str()

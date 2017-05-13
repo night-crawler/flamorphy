@@ -1,4 +1,4 @@
-bind = ['127.0.0.1:1681', 'unix:/venv/run/gunicorn.sock']
+bind = ['0.0.0.0:1681', 'unix:/venv/run/gunicorn.sock']
 workers = 4
 pid = '/venv/run/gunicorn.pid'
 reload = True

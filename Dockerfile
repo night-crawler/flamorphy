@@ -27,6 +27,6 @@ RUN chown -hR flamorphy: /venv/run; chown -hR flamorphy: /venv/log; chown -hR fl
 USER flamorphy
 EXPOSE 1681
 
-CMD ["gunicorn", "--config", "./gunicorn_release.py", "wsgi:application"]
-#ENTRYPOINT ["python"]
-#CMD ["manage.py", "runserver"]
+#CMD ["gunicorn", "--config", "./gunicorn_release.py", "wsgi:application"]
+ENTRYPOINT ["python", "manage.py"]
+CMD ["gunicorn"]

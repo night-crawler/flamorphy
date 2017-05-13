@@ -5,6 +5,8 @@ from flamorphy import create_app
 app = create_app(__name__)
 manager = Manager(app)
 
+# from gunicorn.app.base import Application
+# Application().
 
 @manager.command
 def runserver(host='0.0.0.0', port=None):

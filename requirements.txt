@@ -1,6 +1,8 @@
-pymorphy2
-flask
-Flask-JSONRPC
-Flask-Script
-marshmallow
-gunicorn
+pymorphy2==0.8
+pymorphy2-dicts==2.4.393442.3710985
+pymorphy2-dicts-ru==2.4.403921.4377886
+Flask==0.12.1
+Flask-JSONRPC==0.3.1
+Flask-Script==2.0.5
+marshmallow==2.13.5
+gunicorn==19.7.1

@@ -1,5 +1,5 @@
 FROM debian:stretch
-MAINTAINER night-crawler <www@force.fm>
+LABEL maintainer "www@force.fm"
 
 ENV FLAMORPHY_VERSION '0.1.0'
 

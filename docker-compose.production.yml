@@ -1,0 +1,9 @@
+version: '2'
+services:
+  web:
+     build: .
+     command: gunicorn
+     volumes:
+       - .:/venv/application/
+     ports:
+       - "127.0.0.1:1681:1681"

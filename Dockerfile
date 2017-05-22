@@ -1,32 +1,22 @@
-FROM debian:stretch
-LABEL maintainer "www@force.fm"
+FROM python:3-alpine
 
-ENV FLAMORPHY_VERSION '0.1.0'
+WORKDIR /application/flamorphy
+ADD requirements.txt /application/flamorphy
 
-RUN apt-get update
-RUN apt-get install -y python3 python3-venv
-RUN pyvenv /venv
+RUN apk update && apk upgrade
+RUN apk --update add --virtual build-dependencies python3-dev build-base \
+        && pip install pip -U && pip install wheel \
+        && pip install -r requirements.txt
+        # && apk del build-dependencies
 
-# activate venv
-ENV PATH /venv/bin:$PATH
+ADD . /application/flamorphy
+RUN mkdir /application/log && mkdir /application/run
 
-# Copy only the requirements file, to avoid rebuilding on every file change
-COPY requirements.txt ./
-# separate bdist_wheel install
-RUN pip install wheel
-RUN pip install -r requirements.txt
-
-RUN mkdir /venv/run; mkdir /venv/log
-
-COPY . /venv/application/
-WORKDIR /venv/application
-
-RUN useradd flamorphy -d /venv/application
-RUN chown -hR flamorphy: /venv/run; chown -hR flamorphy: /venv/log; chown -hR flamorphy: /venv/application
+RUN adduser -D -u 1000 flamorphy -h /application
+RUN chown -hR flamorphy: /application
 
 USER flamorphy
 EXPOSE 1681
 
-#CMD ["gunicorn", "--config", "./gunicorn_release.py", "wsgi:application"]
 ENTRYPOINT ["python", "manage.py"]
 CMD ["gunicorn"]

@@ -4,10 +4,10 @@ WORKDIR /application/flamorphy
 ADD requirements.txt /application/flamorphy
 
 RUN apk update && apk upgrade
-RUN apk --update add --virtual build-dependencies python3-dev build-base \
+RUN apk --update add --virtual build-dependencies build-base \
         && pip install pip -U && pip install wheel \
-        && pip install -r requirements.txt
-        # && apk del build-dependencies
+        && pip install -r requirements.txt \
+        && apk del build-dependencies
 
 ADD . /application/flamorphy
 RUN mkdir /application/log && mkdir /application/run
